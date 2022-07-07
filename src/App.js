@@ -11,7 +11,7 @@ function App() {
   return (
     <Router>
       <HeaderComponent />
-      {/* <SectionComponent /> */}
+
       <Routes>
         <Route path="/" element={<Safes />} />
         <Route path="/VaultAppRoles" element={<VaultAppRoles />} />
@@ -21,6 +21,7 @@ function App() {
           path="/AzureActiveDirectory"
           element={<AzureActiveDirectory />}
         />
+        <Route path="*" element={<Safes />} />
       </Routes>
     </Router>
   );

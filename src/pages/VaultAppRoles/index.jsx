@@ -3,7 +3,7 @@ import "./index.css";
 import { useSearchParams } from "react-router-dom";
 
 const VaultAppRoles = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   const data = searchParams.get("data");
   return (

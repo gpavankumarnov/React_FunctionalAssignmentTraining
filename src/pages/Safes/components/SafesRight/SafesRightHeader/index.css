@@ -1,0 +1,25 @@
+.content__right-header {
+  position: relative;
+}
+
+.content__right {
+  width: calc(100% - 35%);
+}
+
+.sectionRightBannerImage {
+  width: 100%;
+}
+
+h2 {
+  color: white;
+  position: absolute;
+  top: 30%;
+  right: 35%;
+}
+
+.contentRight_Text {
+  color: white;
+  position: absolute;
+  top: 50%;
+  right: 10%;
+}

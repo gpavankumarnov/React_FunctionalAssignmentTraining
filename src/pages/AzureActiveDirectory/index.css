@@ -1,0 +1,10 @@
+.main {
+  height: calc(100% - 4rem);
+  background-color: #2f3545;
+  padding: 1.25rem;
+}
+
+h4 {
+  color: white;
+  font-weight: 300;
+}

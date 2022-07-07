@@ -1,0 +1,16 @@
+.main {
+  height: calc(100% - 4rem);
+  background-color: #2f3545;
+  padding: 1.25rem;
+}
+
+.content {
+  height: 90%;
+  background-color: #151820;
+  margin: 1.5rem;
+  border: 1px solid white;
+  display: flex;
+}
+
+.sectionRightBannerImage {
+}

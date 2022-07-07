@@ -1,0 +1,11 @@
+.addForm_Container {
+  border: 1px solid;
+  position: absolute;
+  top: 0%;
+  padding: 5rem;
+  left: 20%;
+  z-index: 2;
+  right: 20%;
+  background-color: #1d212c;
+  bottom: 0%;
+}

@@ -1,32 +1,85 @@
-import React from "react";
+import React, { useState } from "react";
 import "./index.css";
+import iconImage from "./icon_safe.svg";
 
 function AddFormModal() {
+  const initialValues = {
+    SafeName: "",
+    Owner: "",
+    Type: "",
+    Description: "",
+  };
+
+  const [formValues, setFormValues] = useState(initialValues);
+
+  const handleChange = (e) => {
+    // console.log(e.target);
+    //e.target - returns the specific element on which we are doing onchange.
+
+    //With the element, we can get the values using attribute.
+    //...formValues - if given directly(formValues) then it creates object inside object so we use spread to put only properties inside the object.
+    //we use spread operators here to manage instead of giving each as key:value pair of object, we just use spread operator and set the state for which one we need to change.
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+
+    console.log(formValues);
+  };
+
   return (
     <div className="addForm_Container">
       <div className="addForm__form">
-        <h2>Create Safe</h2>
-        <p>
-          A Safe is a logical unit to store the secrets. All the safes are
-          created within Vault. You can control access only at the safe level.
-          As a vault administrator you can manage safes but cannot view the
-          content of the safe.
-        </p>
-
+        <h3>Create Safe</h3>
+        <div className="addForm">
+          <img className="icon-img" src={iconImage} alt="icon-img" />
+          <p className="form_text">
+            A Safe is a logical unit to store the secrets. All the safes are
+            created within Vault. You can control access only at the safe level.
+            As a vault administrator you can manage safes but cannot view the
+            content of the safe.
+          </p>
+        </div>
         <form>
           <label htmlFor="safeName">Safe Name</label>
-          <input type="text" placeholder="Safe Name" name="safeName"></input>
-          <label htmlFor="owner">Owner</label>
-          <input type="text" placeholder="Owner" name="ownerName"></input>
-          <label htmlFor="type">Type</label>
-          <input type="text" placeholder="Personal" name="personalText"></input>
-          <label htmlFor="description">Description</label>
           <input
+            className="input"
             type="text"
-            placeholder="Description"
-            name="descriptionText"
+            placeholder="&nbsp;Safe Name"
+            name="SafeName"
+            value={formValues.SafeName}
+            onChange={handleChange}
           ></input>
-          <p>Please add a minimum of 10 characters</p>
+          <label htmlFor="owner">Owner</label>
+          <input
+            className="input"
+            type="text"
+            placeholder="&nbsp;Owner"
+            name="Owner"
+            value={formValues.Owner}
+            onChange={handleChange}
+          ></input>
+          <label htmlFor="type">Type</label>
+          <input
+            className="input"
+            type="text"
+            placeholder="&nbsp;Personal"
+            name="Type"
+            value={formValues.Type}
+            onChange={handleChange}
+          ></input>
+          <label htmlFor="description">Description</label>
+          <textarea
+            className="form_textarea"
+            rows="3"
+            cols="50"
+            placeholder="Description"
+            value={formValues.Description}
+            onChange={handleChange}
+            name="Description"
+          ></textarea>
+
+          <p className="form_DescriptionText">
+            Please add a minimum of 10 characters
+          </p>
           <div className="create__cancelBtn">
             <button>Cancel</button>
             <button>+Create</button>

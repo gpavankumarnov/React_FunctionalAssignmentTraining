@@ -11,10 +11,12 @@ function SafesRightHeader() {
           src={sectionRightImage}
           alt="SafeBanner"
         />
-        <h2>No Safes Created Yet</h2>
-        <p className="contentRight_Text">
-          Create a Safe to see your secrets, folders and permissions here
-        </p>
+        <div className="sectionRight__Content">
+          <h2>No Safes Created Yet</h2>
+          <p className="contentRight_Text">
+            Create a Safe to see your secrets, folders and permissions here
+          </p>
+        </div>
       </div>
     </div>
   );

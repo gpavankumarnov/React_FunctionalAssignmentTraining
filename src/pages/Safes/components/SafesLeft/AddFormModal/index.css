@@ -1,11 +1,86 @@
 .addForm_Container {
   border: 1px solid;
-  position: absolute;
-  top: 0%;
-  padding: 5rem;
-  left: 20%;
-  z-index: 2;
-  right: 20%;
+
+  padding: 3rem;
+
   background-color: #1d212c;
+  position: fixed;
+
+  top: 0%;
+  right: 30%;
+  left: 25%;
+  height: 100%;
   bottom: 0%;
+  z-index: 1;
+}
+
+input.input {
+  background-color: white;
+  margin: 0.625rem 0rem;
+  padding: 1.25rem;
+}
+
+.addForm {
+  display: flex;
+}
+
+.icon-img {
+  padding: 0.625rem;
+}
+
+p.form_text {
+  color: #c4c4c4;
+}
+
+label {
+  color: white;
+  font-size: 0.8125rem;
+}
+
+.form_text {
+  padding: 0.9375rem;
+}
+
+.create__cancelBtn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.create__cancelBtn button {
+  padding: 0.625rem;
+  padding: 1.25rem;
+
+  margin-right: 0.625rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+h3 {
+  color: white;
+}
+
+.form_textarea {
+  margin: 0.625rem 0rem;
+  padding: 1.25rem;
+  border: none;
+  outline: none;
+}
+
+p.form_DescriptionText {
+  padding: 0rem;
+}
+
+.create__cancelBtn > :nth-child(1) {
+  background-color: white;
+  color: #e20074;
+  font-weight: bold;
+}
+
+.create__cancelBtn > :nth-child(2) {
+  background-color: #e20074;
+  color: white;
 }

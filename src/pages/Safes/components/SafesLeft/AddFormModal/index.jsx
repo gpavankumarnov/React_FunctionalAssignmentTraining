@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./index.css";
 import iconImage from "./icon_safe.svg";
+import { useDispatch } from "react-redux";
+import { addFormData } from "../redux/actions/index";
 
 function AddFormModal() {
   const initialValues = {
@@ -8,9 +10,12 @@ function AddFormModal() {
     Owner: "",
     Type: "",
     Description: "",
+    secrets: [],
   };
 
   const [formValues, setFormValues] = useState(initialValues);
+
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     // console.log(e.target);
@@ -21,8 +26,11 @@ function AddFormModal() {
     //we use spread operators here to manage instead of giving each as key:value pair of object, we just use spread operator and set the state for which one we need to change.
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
-
     console.log(formValues);
+  };
+
+  const onCreateBtnClick = () => {
+    dispatch(addFormData());
   };
 
   return (
@@ -82,7 +90,7 @@ function AddFormModal() {
           </p>
           <div className="create__cancelBtn">
             <button>Cancel</button>
-            <button>+Create</button>
+            <button onClick={onCreateBtnClick}>+Create</button>
           </div>
         </form>
       </div>

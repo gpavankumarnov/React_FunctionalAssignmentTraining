@@ -5,13 +5,15 @@ import { useDispatch } from "react-redux";
 import { addFormData } from "../redux/actions/index";
 
 function AddFormModal() {
-  const initialValues = {
-    SafeName: "",
-    Owner: "",
-    Type: "",
-    Description: "",
-    secrets: [],
-  };
+  const initialValues = [
+    {
+      SafeName: "",
+      Owner: "",
+      Type: "",
+      Description: "",
+      secrets: [],
+    },
+  ];
 
   const [formValues, setFormValues] = useState(initialValues);
 

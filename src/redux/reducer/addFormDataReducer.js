@@ -1,4 +1,8 @@
-export const updateAddFormData = (state = initialsState, action) => {
+const initialFormData = {
+  safesList: [],
+};
+
+export const updateAddFormData = (state = initialFormData, action) => {
   if (action.type === "ADD") {
     return state;
   }

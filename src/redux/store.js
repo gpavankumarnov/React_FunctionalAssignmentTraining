@@ -1,4 +1,4 @@
 import { configureStore } from "react-redux";
-import updateAddFormData from "./reducer";
+import { addFormDataReducer } from "./reducer/addFormDataReducer";
 
-export const store = configureStore(updateAddFormData);
+export const reduxStore = configureStore(addFormDataReducer);

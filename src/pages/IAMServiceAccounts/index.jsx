@@ -3,7 +3,7 @@ import "./index.css";
 
 const IAMServiceAccounts = () => {
   return (
-    <section className="main">
+    <section className="iServiceAccount-Main">
       <h4>IAM Service Accounts</h4>
     </section>
   );

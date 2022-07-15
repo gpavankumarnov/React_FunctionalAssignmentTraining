@@ -1,10 +1,48 @@
-const initialValues = {
-  safesList: [],
-};
+import { type } from "@testing-library/user-event/dist/type";
+import * as actions from "./actionTypes";
 
-export const addFormData = () => {
+// const initialValues = {
+//   safesList: [],
+// };
+
+// export const addFormData = () => {
+//   return {
+//     type: "ADD",
+//     payload: formValues,
+//   };
+// };
+
+//As its a object always need to wrap inside the brackets.
+const addingForm = (formValues) => ({
+  type: actions.addFormData,
+  payload: formValues,
+});
+export default addingForm;
+
+const filterSearch = (searchValue) => ({
+  type: actions.filterSearchData,
+  payload: searchValue,
+});
+
+export const addSecret = (addValue) => {
+  console.log("this is addValue in action::", addValue);
   return {
-    type: "ADD",
-    payload: formValues,
+    type: actions.addSecretData,
+    payload: addValue,
   };
 };
+
+export const onClickActiveInd = (activeIndSafeCardId) => ({
+  type: actions.activeSafe,
+  payload: activeIndSafeCardId,
+});
+
+export const deleteCard = (deleteCardId) => ({
+  type: actions.deleteSafeCard,
+  payload: deleteCardId,
+});
+
+export const onDeleteUpdateActiveSafe = (deleteCardIds) => ({
+  type: actions.updatedActiveSafeOnDelete,
+  payload: deleteCardIds,
+});

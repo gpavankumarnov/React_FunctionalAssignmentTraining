@@ -3,7 +3,7 @@ import "./index.css";
 
 const AzureActiveDirectoryComponent = () => {
   return (
-    <section className="main">
+    <section className="Azure-main">
       <h4>Azure Active Directory</h4>
     </section>
   );

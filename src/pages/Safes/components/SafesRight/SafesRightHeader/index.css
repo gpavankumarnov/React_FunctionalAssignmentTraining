@@ -1,9 +1,11 @@
 .content__right-header {
-  position: relative;
+  height: 12rem;
 }
 
-.content__right {
-  width: calc(100% - 35%);
+.banner_Image {
+  height: 100%;
+  background-image: url("./images/Banner_img.svg");
+  background-size: cover;
 }
 
 .sectionRightBannerImage {
@@ -12,16 +14,16 @@
 
 h2 {
   color: white;
-  padding: 0.9375rem;
 }
 
-p {
+p.contentRight_Text {
   padding: 0.9375rem;
 }
 
 .sectionRight__Content {
-  position: absolute;
-  top: 30%;
-  right: 14%;
-  bottom: 0%;
+  padding: 4rem 0 0 15rem;
+}
+
+.contentRight_Text {
+  color: white;
 }

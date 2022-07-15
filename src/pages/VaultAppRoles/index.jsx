@@ -7,7 +7,7 @@ const VaultAppRoles = () => {
 
   const data = searchParams.get("data");
   return (
-    <section className="main">
+    <section className="vault-Main">
       <h4>
         Vault AppRoles <br></br>
         data = {data}

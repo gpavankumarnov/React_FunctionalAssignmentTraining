@@ -1,21 +1,29 @@
 import React from "react";
 import "./index.css";
-import sectionRightImage from "./images/Banner_img.svg";
+// import { useSelector } from "react-redux/es/exports";
 
-function SafesRightHeader() {
+function SafesRightHeader({ activeSafeData, safesData }) {
+  // const safesData = useSelector((state) => state.safeList);
+  // const safesCardData = useSelector((state) => state.safesCardName_Desc);
+  // const activeSafeData = useSelector((state) => state.activeSafe);
+
   return (
-    <div className="content__right">
-      <div className="content__right-header">
-        <img
-          className="sectionRightBannerImage"
-          src={sectionRightImage}
-          alt="SafeBanner"
-        />
+    <div className="content__right-header">
+      <div className="banner_Image">
         <div className="sectionRight__Content">
-          <h2>No Safes Created Yet</h2>
-          <p className="contentRight_Text">
-            Create a Safe to see your secrets, folders and permissions here
-          </p>
+          {safesData <= 0 ? ( //handling based on the active index data.
+            <div>
+              <h2>No Safes Created Yet</h2>
+              <p className="contentRight_Text">
+                Create a Safe to see your secrets, folders and permissions here
+              </p>
+            </div>
+          ) : (
+            <div>
+              <h2>{activeSafeData.SafeName}</h2>
+              <p className="contentRight_Text">{activeSafeData.Description}</p>
+            </div>
+          )}
         </div>
       </div>
     </div>

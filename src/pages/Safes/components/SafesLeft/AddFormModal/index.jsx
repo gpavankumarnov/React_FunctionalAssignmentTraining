@@ -2,37 +2,69 @@ import React, { useState } from "react";
 import "./index.css";
 import iconImage from "./icon_safe.svg";
 import { useDispatch } from "react-redux";
-import { addFormData } from "../redux/actions/index";
+import addingForm from "../../../../../redux/actions";
+import { v4 as uuidv4 } from "uuid";
 
-function AddFormModal() {
-  const initialValues = [
-    {
-      SafeName: "",
-      Owner: "",
-      Type: "",
-      Description: "",
-      secrets: [],
-    },
-  ];
+function AddFormModal(props) {
+  const initialValues = {
+    SafeName: "",
+    Owner: "",
+    Type: "",
+    Description: "",
+    id: uuidv4(),
+    // activeIndex : "",
+    secrets: [],
+  };
+
+  // console.log(props.closeModal());
 
   const [formValues, setFormValues] = useState(initialValues);
+  const [buttonDisabled, setButtonDisabled] = useState(true);
 
   const dispatch = useDispatch();
 
-  const handleChange = (e) => {
-    // console.log(e.target);
-    //e.target - returns the specific element on which we are doing onchange.
+  // console.log(e.target);
+  //e.target - returns the specific element on which we are doing onchange.
+  //With the element, we can get the values using attribute.
+  //...formValues - if given directly(formValues) then it creates object inside object so we use spread to put only properties inside the object.
+  //we use spread operators here to manage instead of giving each as key:value pair of object, we just use spread operator and set the state for which one we need to change.
 
-    //With the element, we can get the values using attribute.
-    //...formValues - if given directly(formValues) then it creates object inside object so we use spread to put only properties inside the object.
-    //we use spread operators here to manage instead of giving each as key:value pair of object, we just use spread operator and set the state for which one we need to change.
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
     console.log(formValues);
   };
 
-  const onCreateBtnClick = () => {
-    dispatch(addFormData());
+  // const createButton = () => {
+  //   if (
+  //     initialValues.SafeName !== "" &&
+  //     initialValues.Owner !== "" &&
+  //     initialValues.Type !== "" &&
+  //     initialValues.Description.length > 10
+  //   ) {
+  //     return setButtonDisabled(false);
+  //   }
+  // };
+
+  const onCreateBtnClick = (e) => {
+    e.preventDefault();
+    // if (
+    //   initialValues.SafeName !== "" &&
+    //   initialValues.Owner !== "" &&
+    //   initialValues.Type !== "" &&
+    //   initialValues.Description.length > 10
+    // ) {
+    //   return dispatch(addingForm(formValues));
+    // }
+    dispatch(addingForm(formValues));
+    console.log("triggering create btn");
+    setButtonDisabled(false);
+    props.closeModal();
+  };
+
+  const onCancelBtnClick = (e) => {
+    e.preventDefault();
+    props.closeModal();
   };
 
   return (
@@ -91,7 +123,7 @@ function AddFormModal() {
             Please add a minimum of 10 characters
           </p>
           <div className="create__cancelBtn">
-            <button>Cancel</button>
+            <button onClick={onCancelBtnClick}>Cancel</button>
             <button onClick={onCreateBtnClick}>+Create</button>
           </div>
         </form>

@@ -1,4 +1,4 @@
-import { type } from "@testing-library/user-event/dist/type";
+// import { type } from "@testing-library/user-event/dist/type";
 import * as actions from "./actionTypes";
 
 // const initialValues = {
@@ -19,10 +19,10 @@ const addingForm = (formValues) => ({
 });
 export default addingForm;
 
-const filterSearch = (searchValue) => ({
-  type: actions.filterSearchData,
-  payload: searchValue,
-});
+// const filterSearch = (searchValue) => ({
+//   type: actions.filterSearchData,
+//   payload: searchValue,
+// });
 
 export const addSecret = (addValue) => {
   console.log("this is addValue in action::", addValue);

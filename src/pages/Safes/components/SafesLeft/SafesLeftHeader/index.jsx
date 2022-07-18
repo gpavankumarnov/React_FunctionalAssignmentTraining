@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./index.css";
 import { useDispatch } from "react-redux";
 // import addBtn from "./images/addBtn.svg";
@@ -8,23 +8,23 @@ import searchIcon from "./images/icon_search.svg";
 import filterSearch from "../../../../../redux/actions/index";
 
 function SafesLeftHeader({ safesDataList }) {
-  const [searchValue, setSearchValue] = useState(false);
+  // const [searchValue, setSearchValue] = useState(false);
 
   const dispatch = useDispatch();
 
-  let timeoutId;
+  // let timeoutId;
 
-  const searchFunc = (searchFilter) => {
-    // clearInterval(timeoutId), (timeoutId = setTimeout(searchFilter, 2000));
-  };
+  // const searchFunc = (searchFilter) => {
+  //   // clearInterval(timeoutId), (timeoutId = setTimeout(searchFilter, 2000));
+  // };
 
   const searchFilter = (searchValue) => {
-    setSearchValue(true);
+    // setSearchValue(true);
     console.log("left header filter search total data from store", searchValue);
-    const lists = { ...safesDataList };
+    // const lists = { ...safesDataList };
     // const filteredList = lists.filter((item) => {
     //   item.SafeName === searchValue;
-    // // });
+    //   // });
     // console.log("data after filter", filteredList);
 
     dispatch(filterSearch(searchValue));

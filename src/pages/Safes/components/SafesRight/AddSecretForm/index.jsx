@@ -4,13 +4,18 @@ import { v4 as uuidv4 } from "uuid";
 import { useDispatch } from "react-redux";
 // import SafesRightContent from "../SafesRightContent/index";
 import { addSecret } from "../../../../../redux/actions/index";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-function AddSecretForm({ cancelBtn, safesData }) {
+function AddSecretForm({ cancelBtn, activeSafesData }) {
   const secretData = {
     id: uuidv4(),
     secretName: "",
   };
 
+  // secrets: [];
+
+  // safeList: [{}, {}];
   const [secretValue, setSecretValue] = useState(secretData);
 
   // const [showSecretForm, setShowSecretForm] = useState(false);
@@ -24,13 +29,13 @@ function AddSecretForm({ cancelBtn, safesData }) {
   };
 
   const addSecretCard = () => {
-    console.log("safesData::::::", safesData);
-    let safes = { ...safesData };
-    let secretArray = [...safes.secrets];
+    let safes = { ...activeSafesData };
+    let secretArray = [...safes.secrets]; //secrets:
     secretArray.push(secretValue);
     safes.secrets = secretArray;
-
     dispatch(addSecret(safes));
+    cancelBtn();
+    toast("New Folder has been created successfully");
   };
 
   return (
@@ -61,6 +66,7 @@ function AddSecretForm({ cancelBtn, safesData }) {
           <button onClick={cancelBtn}>Cancel</button>
           {/* {showSecretForm && <SafesRightContent />} */}
           <button onClick={() => addSecretCard()}>Save</button>
+          <ToastContainer />
         </div>
       </div>
     </div>

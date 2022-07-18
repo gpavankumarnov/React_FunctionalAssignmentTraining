@@ -1,0 +1,26 @@
+.secretList__data {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0.625rem;
+  height: 25%;
+  align-items: flex-start;
+}
+
+.secretList__text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.secretFolderIcon,
+.card__Name {
+  padding: 0.3125rem;
+  color: #d0d0d0;
+  font-size: 1rem;
+}
+
+.new-Text {
+  color: #33ab78;
+  font-size: 0.75rem;
+  padding: 0.3125rem;
+}

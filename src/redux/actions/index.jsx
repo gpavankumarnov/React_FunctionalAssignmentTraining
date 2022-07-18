@@ -46,3 +46,8 @@ export const onDeleteUpdateActiveSafe = (deleteCardIds) => ({
   type: actions.updatedActiveSafeOnDelete,
   payload: deleteCardIds,
 });
+
+export const updateEditForm = (editFormValues) => ({
+  type: actions.updateEditForm,
+  payload: editFormValues,
+});

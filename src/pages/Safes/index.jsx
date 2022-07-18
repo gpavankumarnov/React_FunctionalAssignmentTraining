@@ -10,12 +10,17 @@ const SafesComponent = () => {
   const safeData = useSelector((state) => state.safeList);
   const activeSafeData = useSelector((state) => state.activeSafe);
 
+  console.log("from parent side", safeData);
+
   return (
     <section className="main">
       <div className="content">
         <div className="content__left">
           <SafesLeftHeader />
-          <SafesLeftContent />
+          <SafesLeftContent
+            safesDataList={safeData}
+            activeSafesData={activeSafeData}
+          />
         </div>
         <div className="content__right">
           <SafesRightHeader

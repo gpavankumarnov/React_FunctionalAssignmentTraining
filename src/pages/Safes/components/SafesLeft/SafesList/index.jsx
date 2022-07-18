@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux/es/exports";
 import safeListIcon from "./images/icon_safeList.svg";
 import safeListEdit from "./images/icon_edit_active.svg";
@@ -13,15 +13,19 @@ import moment from "moment/moment.js";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/themes/light.css";
+import EditFormModal from "../EditFormModal";
 
-function SafesList({ safesListAddBtn }) {
+function SafesList({ safesListAddBtn, activeSafeData }) {
   // const safesData = useSelector((state) => state.SafeList);
   // console.log("store data ", safesData[0]);
 
-  // const [safeCardName, setSafeCardName] = useState("");
+  //
 
   const safesData = useSelector((state) => state.safeList);
   const dispatch = useDispatch();
+  const [editForm, setEditForm] = useState(false);
+
+  // const data = {...activeSafeData}
 
   const deleteSafeCardItem = (e, deleteId) => {
     console.log("delete card ------", deleteId);
@@ -31,16 +35,22 @@ function SafesList({ safesListAddBtn }) {
   };
 
   const onClickActiveIndex = (updateId) => {
-    console.log("activeIndexUpdate::", updateId);
     // const filteredSafeName = safesData.filter((e) => e.id === updateId);
     // const onClickSafeName = filteredSafeName[0].SafeName;
     // setSafeCardName(onClickSafeName);
     dispatch(onClickActiveInd(updateId));
   };
 
+  const editClick = () => {
+    setEditForm(true);
+  };
+
+  const onUpdate_CancelBtnClick = () => {
+    setEditForm(false);
+  };
+
   //same logic in redux reducer for delete
 
-  console.log("safesData is ::", safesData[0]);
   // const safeListSafeName = safesData.map((name) => <p>{name.SafeName}</p>);
 
   return (
@@ -48,7 +58,7 @@ function SafesList({ safesListAddBtn }) {
       <div className="content__left-list">
         <div className="content__left-listData">
           {safesData.map((name, index) => (
-            <p
+            <div
               className="safeCard"
               key={name.id}
               onClick={() => onClickActiveIndex(name)}
@@ -70,7 +80,7 @@ function SafesList({ safesListAddBtn }) {
               <img
                 className="icon"
                 src={safeListEdit}
-                onClick={safesListAddBtn}
+                onClick={editClick}
                 alt="edit-Button"
               ></img>
               <img
@@ -80,7 +90,7 @@ function SafesList({ safesListAddBtn }) {
                 alt="delete-Button"
               ></img>
               {/* </div> */}
-            </p>
+            </div>
           ))}
         </div>
       </div>
@@ -95,6 +105,12 @@ function SafesList({ safesListAddBtn }) {
           <img src={addBtn} alt="create" onClick={safesListAddBtn} />
         </Tippy>
       </div>
+      {editForm && (
+        <EditFormModal
+          onUpdate={onUpdate_CancelBtnClick}
+          activeSafeDataList={activeSafeData}
+        />
+      )}
     </>
   );
 }

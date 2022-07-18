@@ -7,14 +7,26 @@ import searchIcon from "./images/icon_search.svg";
 // import AddFormModal from "../AddFormModal";
 import filterSearch from "../../../../../redux/actions/index";
 
-function SafesLeftHeader() {
+function SafesLeftHeader({ safesDataList }) {
   const [searchValue, setSearchValue] = useState(false);
 
   const dispatch = useDispatch();
 
+  let timeoutId;
+
+  const searchFunc = (searchFilter) => {
+    // clearInterval(timeoutId), (timeoutId = setTimeout(searchFilter, 2000));
+  };
+
   const searchFilter = (searchValue) => {
-    setSearchValue(searchValue);
-    console.log(searchValue);
+    setSearchValue(true);
+    console.log("left header filter search total data from store", searchValue);
+    const lists = { ...safesDataList };
+    // const filteredList = lists.filter((item) => {
+    //   item.SafeName === searchValue;
+    // // });
+    // console.log("data after filter", filteredList);
+
     dispatch(filterSearch(searchValue));
   };
 

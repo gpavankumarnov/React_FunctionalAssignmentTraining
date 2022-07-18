@@ -4,3 +4,4 @@ export const addSecretData = "ADD_SECRET_DATA";
 export const activeSafe = "ACTIVE-SAFE";
 export const deleteSafeCard = "DELETE_SAFE-CARD";
 export const updatedActiveSafeOnDelete = "UPDATE_ActiveSafe_On-Delete";
+export const updateEditForm = "UPDATE_EDIT_FORM";

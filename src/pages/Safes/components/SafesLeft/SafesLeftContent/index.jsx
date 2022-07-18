@@ -9,30 +9,26 @@ import "tippy.js/dist/tippy.css";
 // import "tippy.js/theme/light.css";
 import "tippy.js/themes/light.css";
 
-function SafesLeftContent() {
+function SafesLeftContent({ activeSafesData }) {
   const [addShowForm, setAddShowForm] = useState(false);
   const [addSafesList, setAddSafesList] = useState(false);
 
   const safesData = useSelector((state) => state.safeList);
 
-  console.log("safesData is ::", safesData);
-
   const setAddShowFormFunc = () => {
     setAddShowForm(false);
     setAddSafesList(true);
-    console.log("called setAddShowFormFunc");
   };
 
   const safesListSetAddShowFormFunc = () => {
     setAddShowForm(true);
-    console.log("called safesListSetAddShowFormFunc");
   };
-  console.log("safeData", safesData.length);
+
   return (
     <div className="safes__list">
       {safesData.length === 0 ? (
         <div className="content__left-data">
-          {addSafesList && <SafesList />}
+          {addSafesList && <SafesList activeSafeData={activeSafesData} />}
 
           <p className="sectionLeftImageText">Create a Safe and get started!</p>
           <div className="addBtn">
@@ -53,7 +49,10 @@ function SafesLeftContent() {
           </div>
         </div>
       ) : (
-        <SafesList safesListAddBtn={safesListSetAddShowFormFunc} />
+        <SafesList
+          activeSafeData={activeSafesData}
+          safesListAddBtn={safesListSetAddShowFormFunc}
+        />
       )}
       {addShowForm && <AddFormModal closeModal={setAddShowFormFunc} />}
     </div>

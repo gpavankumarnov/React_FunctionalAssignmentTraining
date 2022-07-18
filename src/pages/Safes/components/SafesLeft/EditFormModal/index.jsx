@@ -1,25 +1,16 @@
 import React, { useState } from "react";
-import "./index.css";
-import iconImage from "./icon_safe.svg";
-import { useDispatch } from "react-redux";
-import addingForm from "../../../../../redux/actions";
-import { v4 as uuidv4 } from "uuid";
+import { useDispatch } from "react-redux/es/exports";
+import { updateEditForm } from "../../../../../redux/actions";
+import iconImage from "./images/icon_safe.svg";
 
-function AddFormModal(props) {
-  const initialValues = {
-    SafeName: "",
-    Owner: "",
-    Type: "",
-    Description: "",
-    id: uuidv4(),
-    // activeIndex : "",
-    secrets: [],
-  };
+function EditFormModal({ activeSafeDataList, onUpdate }) {
+  console.log("::::actveSafe", activeSafeDataList);
 
-  // console.log(props.closeModal());
+  const data = { ...activeSafeDataList };
 
-  const [formValues, setFormValues] = useState(initialValues);
+  const [editFormValues, setEditFormValues] = useState(data);
   const [typeDropdownValue, setTypeDropdownValue] = useState("");
+  console.log("::::::: edit", editFormValues);
 
   const dispatch = useDispatch();
 
@@ -29,45 +20,31 @@ function AddFormModal(props) {
   //...formValues - if given directly(formValues) then it creates object inside object so we use spread to put only properties inside the object.
   //we use spread operators here to manage instead of giving each as key:value pair of object, we just use spread operator and set the state for which one we need to change.
 
+  // ****
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    setFormValues({ ...formValues, [name]: value, Type: typeDropdownValue });
-    console.log(formValues);
+    setEditFormValues({
+      ...editFormValues,
+      [name]: value,
+      Type: typeDropdownValue,
+    });
+    console.log(editFormValues);
   };
 
-  console.log(typeDropdownValue);
-
-  // const createButton = () => {
-  //   if (
-  //     initialValues.SafeName !== "" &&
-  //     initialValues.Owner !== "" &&
-  //     initialValues.Type !== "" &&
-  //     initialValues.Description.length > 10
-  //   ) {
-  //     return setButtonDisabled(false);
-  //   }
-  // };
-
-  const onCreateBtnClick = (e) => {
+  const onUpdateBtnClick = (e) => {
     e.preventDefault();
-    // if (
-    //   initialValues.SafeName !== "" &&
-    //   initialValues.Owner !== "" &&
-    //   initialValues.Type !== "" &&
-    //   initialValues.Description.length > 10
-    // ) {
-    //   return dispatch(addingForm(formValues));
-    // }
-    dispatch(addingForm(formValues));
-    console.log("triggering create btn");
-    // setButtonDisabled(false);
-    props.closeModal();
+
+    dispatch(updateEditForm(editFormValues));
+    console.log("triggering update btn");
+    onUpdate();
   };
 
   const onCancelBtnClick = (e) => {
     e.preventDefault();
-    props.closeModal();
+
+    console.log("triggering close btn");
+    onUpdate();
   };
 
   return (
@@ -90,7 +67,7 @@ function AddFormModal(props) {
             type="text"
             placeholder="&nbsp;Safe Name"
             name="SafeName"
-            value={formValues.SafeName}
+            value={editFormValues.SafeName}
             onChange={handleChange}
           ></input>
           <label htmlFor="owner">Owner</label>
@@ -99,7 +76,7 @@ function AddFormModal(props) {
             type="text"
             placeholder="&nbsp;Owner"
             name="Owner"
-            value={formValues.Owner}
+            value={editFormValues.Owner}
             onChange={handleChange}
           ></input>
           <label htmlFor="type">Type</label>
@@ -120,7 +97,7 @@ function AddFormModal(props) {
             rows="3"
             cols="50"
             placeholder="Description"
-            value={formValues.Description}
+            value={editFormValues.Description}
             onChange={handleChange}
             name="Description"
           ></textarea>
@@ -130,11 +107,12 @@ function AddFormModal(props) {
           </p>
           <div className="create__cancelBtn">
             <button onClick={onCancelBtnClick}>Cancel</button>
-            <button onClick={onCreateBtnClick}>+Create</button>
+            <button onClick={onUpdateBtnClick}>Update</button>
           </div>
         </form>
       </div>
     </div>
   );
 }
-export default AddFormModal;
+
+export default EditFormModal;

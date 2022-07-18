@@ -19,7 +19,6 @@
 
 .content__right {
   color: #5e627c;
-  padding: 2%;
 }
 
 .content-right div {
@@ -79,6 +78,7 @@
 
 .secrets__count {
   padding: 1%;
+  height: 15%;
 }
 
 .content__right-data-content span {

@@ -16,8 +16,6 @@ function SecretList() {
     setIsActive(true);
   };
 
-  console.log("id::::", activeSafeData.secrets[0]);
-
   return (
     <div className="secret__Cards">
       {objectLength > 0 &&

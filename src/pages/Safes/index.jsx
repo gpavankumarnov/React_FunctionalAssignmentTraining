@@ -16,7 +16,7 @@ const SafesComponent = () => {
     <section className="main">
       <div className="content">
         <div className="content__left">
-          <SafesLeftHeader />
+          <SafesLeftHeader safesDataList={safeData} />
           <SafesLeftContent
             safesDataList={safeData}
             activeSafesData={activeSafeData}

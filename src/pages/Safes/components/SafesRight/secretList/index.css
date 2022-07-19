@@ -6,6 +6,20 @@
   align-items: flex-start;
 }
 
+.secret__cards-data:hover {
+  background: linear-gradient(to top, #72134b, #1d212c);
+}
+
+.secret__cards-data {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.secret__cards-data > div {
+  padding: 1rem;
+}
+
 .secretList__text {
   display: flex;
   align-items: center;

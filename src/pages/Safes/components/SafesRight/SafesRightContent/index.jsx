@@ -5,7 +5,7 @@ import AddSecretForm from "../AddSecretForm/index";
 import secret_Logo from "./images/img_secrets.svg";
 import SecretList from "../SecretList/index";
 
-function SafesRightContent({ activeSafeData }) {
+function SafesRightContent({ activeSafeData, safesDataList }) {
   const [showSecretForm, setShowSecretForm] = useState(false);
 
   const showFormOnClick = () => {
@@ -16,8 +16,8 @@ function SafesRightContent({ activeSafeData }) {
     setShowSecretForm(false);
   };
 
-  const objectLength = Object.keys(activeSafeData).length;
-
+  const safes = safesDataList.length;
+  console.log("%%%%", safes);
   return (
     <div className="content__right-data">
       <div className="content__right-data-header">
@@ -45,11 +45,12 @@ function SafesRightContent({ activeSafeData }) {
         <div className="secrets__count">
           <h5>
             &nbsp; &nbsp;
-            {activeSafeData.length > 0 ? activeSafeData.secrets.length : 0}
+            {/* {activeSafeData.length > 0 ? activeSafeData.secrets.length : 0} */}
             &nbsp;Secrets
           </h5>
         </div>
-        {objectLength > 0 ? <SecretList /> : null}
+        {/* Object.keys(activeSafeData).length > 0? ( <SecretList />) : ( "" ) */}
+        {activeSafeData != 0 && <SecretList />}
         <center>
           <img className="secrets_Logo" src={secret_Logo} alt="secrets_Logo" />
         </center>

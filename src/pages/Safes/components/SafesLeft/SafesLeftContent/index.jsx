@@ -9,7 +9,7 @@ import "tippy.js/dist/tippy.css";
 // import "tippy.js/theme/light.css";
 import "tippy.js/themes/light.css";
 
-function SafesLeftContent({ activeSafesData }) {
+function SafesLeftContent({ activeSafesData, filteredSafeOnSearch }) {
   const [addShowForm, setAddShowForm] = useState(false);
   const [addSafesList, setAddSafesList] = useState(false);
 
@@ -28,7 +28,12 @@ function SafesLeftContent({ activeSafesData }) {
     <div className="safes__list">
       {safesData.length === 0 ? (
         <div className="content__left-data">
-          {addSafesList && <SafesList activeSafeData={activeSafesData} />}
+          {addSafesList && (
+            <SafesList
+              SafeFilterOnSearch={filteredSafeOnSearch}
+              activeSafeData={activeSafesData}
+            />
+          )}
 
           <p className="sectionLeftImageText">Create a Safe and get started!</p>
           <div className="addBtn">

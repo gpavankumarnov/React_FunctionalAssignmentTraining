@@ -7,7 +7,6 @@ const initialState = {
 };
 
 export const updateAddFormData = (state = initialState, action) => {
-  console.log(state.safeList);
   // let safesArray = [...store.safeData];
   // safesArray.push(action.payload);
   // console.log("action : " + action);
@@ -28,7 +27,6 @@ export const updateAddFormData = (state = initialState, action) => {
     //   };
 
     case actions.deleteSafeCard:
-      debugger;
       // let position = state.safeList.length - 1;
       const filteredSafeList = state.safeList.filter(
         (remove) => remove.id !== action.payload
@@ -83,18 +81,30 @@ export const updateAddFormData = (state = initialState, action) => {
 
     case actions.updateEditForm:
       const updateEdit = [...state.safeList];
-      console.log("updateEdit!!!", updateEdit);
-      console.log("action.payload", action.payload);
+
       const indexValue = updateEdit.findIndex(
         (item) => item.id === action.payload.id
       );
-      console.log("index", indexValue);
+
       updateEdit.splice(indexValue, 1, action.payload);
 
-      console.log(">>>>>>>", updateEdit);
       return {
         ...state,
         safeList: updateEdit,
+        activeSafe: action.payload,
+      };
+
+    case actions.deleteSecretCard:
+      const deletedSecretInSafe = [...state.safeList];
+      const indexVal = deletedSecretInSafe.findIndex(
+        (item) => item.id === action.payload.id
+      );
+
+      deletedSecretInSafe.splice(indexVal, 1, action.payload);
+
+      return {
+        ...state,
+        safeList: deletedSecretInSafe,
         activeSafe: action.payload,
       };
 

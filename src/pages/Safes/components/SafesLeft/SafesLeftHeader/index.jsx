@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./index.css";
 import { useDispatch } from "react-redux";
 // import addBtn from "./images/addBtn.svg";
@@ -7,28 +7,41 @@ import searchIcon from "./images/icon_search.svg";
 // import AddFormModal from "../AddFormModal";
 import filterSearch from "../../../../../redux/actions/index";
 
-function SafesLeftHeader({ safesDataList }) {
-  // const [searchValue, setSearchValue] = useState(false);
+function SafesLeftHeader({ safesDataList, searchDataFromChild }) {
+  const [searchValue, setSearchValue] = useState(false);
 
   const dispatch = useDispatch();
 
   // let timeoutId;
 
-  // const searchFunc = (searchFilter) => {
-  //   // clearInterval(timeoutId), (timeoutId = setTimeout(searchFilter, 2000));
+  // const searchFilter = () => {
+  //   console.log("printing value");
+  //   // const filteredList = safesDataList.filter(
+  //   //   (item) => item.SafeName === searchValue
+  //   // );
+
   // };
 
-  const searchFilter = (searchValue) => {
-    // setSearchValue(true);
-    console.log("left header filter search total data from store", searchValue);
-    // const lists = { ...safesDataList };
-    // const filteredList = lists.filter((item) => {
-    //   item.SafeName === searchValue;
-    //   // });
-    // console.log("data after filter", filteredList);
+  // let timeID;
 
-    dispatch(filterSearch(searchValue));
-  };
+  // // const searchFunc = debounce(searchFilter, 3000);
+
+  // const searchFunc = (e) => {
+  //   console.log(e);
+
+  //   clearInterval(timeID);
+  //   setSearchValue(e);
+  //   timeID = setTimeout(searchFilter, 3000);
+  // };
+
+  // function debounce(func, delay) {
+  //   return function () {
+  //     clearInterval(timeID);
+  //     timeID = setTimeout(() => {
+  //       func();
+  //     }, delay);
+  //   };
+  // }
 
   return (
     <div className="content__left-header">
@@ -39,7 +52,7 @@ function SafesLeftHeader({ safesDataList }) {
           type="text"
           placeholder="Search"
           name="search"
-          onChange={(e) => searchFilter(e.target.value)}
+          onChange={(e) => searchDataFromChild(e.target.value)}
         ></input>
       </button>
     </div>

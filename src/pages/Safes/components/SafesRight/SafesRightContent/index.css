@@ -6,7 +6,7 @@
 }
 
 .content__right-data {
-  height: calc(100% - 12rem);
+  height: calc(100% - 10rem);
   background-image: linear-gradient(to top, #151820, #2c3040);
 }
 
@@ -55,7 +55,7 @@
 
 .content__right-data-content {
   height: calc(100% - 3rem);
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 
 .secrets_Logo {
@@ -72,7 +72,7 @@
 .Add-secrets {
   text-align: center;
   padding: 1rem;
-  background-color: #e20074;
+  background-color: #454c5e;
   color: white;
 }
 

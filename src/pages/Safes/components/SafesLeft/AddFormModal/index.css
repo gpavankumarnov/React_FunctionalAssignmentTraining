@@ -1,9 +1,12 @@
-.addForm_Container {
+.modal {
+}
+
+.overlay {
   border: 1px solid;
 
   padding: 3rem;
 
-  background-color: #1d212c;
+  background-color: #2a2e3e;
   position: fixed;
 
   top: 0%;
@@ -11,7 +14,8 @@
   left: 25%;
   height: 100%;
   bottom: 0%;
-  z-index: 1;
+  z-index: 2;
+  /* background: rgba(0, 0, 0, 1); */
 }
 
 input.input {

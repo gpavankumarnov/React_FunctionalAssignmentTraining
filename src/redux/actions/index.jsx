@@ -51,3 +51,8 @@ export const updateEditForm = (editFormValues) => ({
   type: actions.updateEditForm,
   payload: editFormValues,
 });
+
+export const deleteSecretItem = (deleteItemID) => ({
+  type: actions.deleteSecretCard,
+  payload: deleteItemID,
+});

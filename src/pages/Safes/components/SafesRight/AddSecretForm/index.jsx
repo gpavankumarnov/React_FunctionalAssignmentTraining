@@ -66,7 +66,7 @@ function AddSecretForm({ cancelBtn, activeSafesData }) {
           <button onClick={cancelBtn}>Cancel</button>
           {/* {showSecretForm && <SafesRightContent />} */}
           <button onClick={() => addSecretCard()}>Save</button>
-          <ToastContainer />
+          {/* <ToastContainer /> */}
         </div>
       </div>
     </div>

@@ -48,7 +48,7 @@ function EditFormModal({ activeSafeDataList, onUpdate }) {
   };
 
   return (
-    <div className="addForm_Container">
+    <div className="overlay">
       <div className="addForm__form">
         <h3>Create Safe</h3>
         <div className="addForm">

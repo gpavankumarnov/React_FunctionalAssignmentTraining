@@ -20,6 +20,7 @@ function AddFormModal(props) {
 
   const [formValues, setFormValues] = useState(initialValues);
   const [typeDropdownValue, setTypeDropdownValue] = useState("");
+  const [safeNameField, setSafeNameField] = useState(true);
 
   const dispatch = useDispatch();
 
@@ -71,68 +72,73 @@ function AddFormModal(props) {
   };
 
   return (
-    <div className="addForm_Container">
-      <div className="addForm__form">
-        <h3>Create Safe</h3>
-        <div className="addForm">
-          <img className="icon-img" src={iconImage} alt="icon-img" />
-          <p className="form_text">
-            A Safe is a logical unit to store the secrets. All the safes are
-            created within Vault. You can control access only at the safe level.
-            As a vault administrator you can manage safes but cannot view the
-            content of the safe.
-          </p>
-        </div>
-        <form>
-          <label htmlFor="safeName">Safe Name</label>
-          <input
-            className="input"
-            type="text"
-            placeholder="&nbsp;Safe Name"
-            name="SafeName"
-            value={formValues.SafeName}
-            onChange={handleChange}
-          ></input>
-          <label htmlFor="owner">Owner</label>
-          <input
-            className="input"
-            type="text"
-            placeholder="&nbsp;Owner"
-            name="Owner"
-            value={formValues.Owner}
-            onChange={handleChange}
-          ></input>
-          <label htmlFor="type">Type</label>
+    <div className="modal__cover">
+      <div className="modal">
+        <div className="overlay">
+          <div className="addForm__form">
+            <h3>Create Safe</h3>
+            <div className="addForm">
+              <img className="icon-img" src={iconImage} alt="icon-img" />
+              <p className="form_text">
+                A Safe is a logical unit to store the secrets. All the safes are
+                created within Vault. You can control access only at the safe
+                level. As a vault administrator you can manage safes but cannot
+                view the content of the safe.
+              </p>
+            </div>
+            <form>
+              <label htmlFor="safeName">Safe Name</label>
+              <input
+                className="input"
+                type="text"
+                placeholder="&nbsp;Safe Name"
+                name="SafeName"
+                value={formValues.SafeName}
+                onChange={handleChange}
+              ></input>
+              <label htmlFor="owner">Owner</label>
+              <input
+                className="input"
+                type="text"
+                placeholder="&nbsp;Owner"
+                name="Owner"
+                value={formValues.Owner}
+                onChange={handleChange}
+              ></input>
+              <label htmlFor="type">Type</label>
 
-          <select
-            id="dropdown"
-            name="Type"
-            value={typeDropdownValue}
-            onChange={(e) => setTypeDropdownValue(e.target.value)}
-          >
-            <option value="Personal">Personal</option>
-            <option value="Other">Other</option>
-          </select>
-          {/* </input> */}
-          <label htmlFor="description">Description</label>
-          <textarea
-            className="form_textarea"
-            rows="3"
-            cols="50"
-            placeholder="Description"
-            value={formValues.Description}
-            onChange={handleChange}
-            name="Description"
-          ></textarea>
+              <select
+                id="dropdown"
+                name="Type"
+                value={typeDropdownValue}
+                onChange={(e) => setTypeDropdownValue(e.target.value)}
+              >
+                <option value="Personal">Personal</option>
+                <option value="Other">Other</option>
+              </select>
+              {/* </input> */}
+              <label htmlFor="description">Description</label>
+              <textarea
+                className="form_textarea"
+                rows="3"
+                cols="50"
+                placeholder="Description"
+                value={formValues.Description}
+                onChange={handleChange}
+                name="Description"
+                maxlength={10}
+              ></textarea>
 
-          <p className="form_DescriptionText">
-            Please add a minimum of 10 characters
-          </p>
-          <div className="create__cancelBtn">
-            <button onClick={onCancelBtnClick}>Cancel</button>
-            <button onClick={onCreateBtnClick}>+Create</button>
+              <p className="form_DescriptionText">
+                Please add a minimum of 10 characters
+              </p>
+              <div className="create__cancelBtn">
+                <button onClick={onCancelBtnClick}>Cancel</button>
+                <button onClick={onCreateBtnClick}>+Create</button>
+              </div>
+            </form>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );

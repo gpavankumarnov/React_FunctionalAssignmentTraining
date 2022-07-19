@@ -15,7 +15,7 @@ import "tippy.js/dist/tippy.css";
 import "tippy.js/themes/light.css";
 import EditFormModal from "../EditFormModal";
 
-function SafesList({ safesListAddBtn, activeSafeData }) {
+function SafesList({ safesListAddBtn, activeSafeData, SafeFilterOnSearch }) {
   // const safesData = useSelector((state) => state.SafeList);
   // console.log("store data ", safesData[0]);
 
@@ -49,6 +49,8 @@ function SafesList({ safesListAddBtn, activeSafeData }) {
     setEditForm(false);
   };
 
+  const safes = safesData.length;
+  console.log(safes);
   //same logic in redux reducer for delete
 
   // const safeListSafeName = safesData.map((name) => <p>{name.SafeName}</p>);
@@ -57,11 +59,21 @@ function SafesList({ safesListAddBtn, activeSafeData }) {
     <>
       <div className="content__left-list">
         <div className="content__left-listData">
+          {/* list and set
+          //useeffect - searchValue, safeData from redux */}
+          {/* {SafeFilterOnSearch != null ? ( */}
+          {/* {SafeFilterOnSearch =0? */}
           {safesData.map((name, index) => (
             <div
               className="safeCard"
               key={name.id}
               onClick={() => onClickActiveIndex(name)}
+              style={{
+                background:
+                  name.id === activeSafeData.id
+                    ? "linear-gradient(to right, #72134b, #1d212c)"
+                    : "black",
+              }}
             >
               {/* <div className="content__left-list"> */}
               <img
@@ -92,19 +104,21 @@ function SafesList({ safesListAddBtn, activeSafeData }) {
               {/* </div> */}
             </div>
           ))}
+          {/* : ""} */}
         </div>
       </div>
-
-      <div className="safesList-addBtn">
-        <Tippy
-          theme={"light"}
-          interactive={"true"}
-          content="Create New Safe"
-          placement="left"
-        >
-          <img src={addBtn} alt="create" onClick={safesListAddBtn} />
-        </Tippy>
-      </div>
+      {safes >= 1 ? (
+        <div className="safesList-addBtn">
+          <Tippy
+            theme={"light"}
+            interactive={"true"}
+            content="Create New Safe"
+            placement="left"
+          >
+            <img src={addBtn} alt="create" onClick={safesListAddBtn} />
+          </Tippy>
+        </div>
+      ) : null}
       {editForm && (
         <EditFormModal
           onUpdate={onUpdate_CancelBtnClick}

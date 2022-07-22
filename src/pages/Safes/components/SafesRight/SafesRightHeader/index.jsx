@@ -12,16 +12,18 @@ function SafesRightHeader({ activeSafeData, safesData }) {
       <div className="banner_Image">
         <div className="sectionRight__Content">
           {safesData <= 0 ? ( //handling based on the active index data.
-            <div>
-              <h2>No Safes Created Yet</h2>
+            <div className="text-content">
+              <h2 className="contentRight_Text">No Safes Created Yet</h2>
               <p className="contentRight_Text">
                 Create a Safe to see your secrets, folders and permissions here
               </p>
             </div>
           ) : (
-            <div>
-              <h2>{activeSafeData.SafeName}</h2>
-              <p className="contentRight_Text">{activeSafeData.Description}</p>
+            <div className="content-Text" maxLength={25}>
+              <h2 maxLength={25}>{activeSafeData.SafeName}</h2>
+              <p maxLength={25} className="contentRight_Text">
+                {activeSafeData.Description}
+              </p>
             </div>
           )}
         </div>

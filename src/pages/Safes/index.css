@@ -2,16 +2,18 @@
   height: calc(100% - 4rem);
   background-color: #2f3545;
   padding: 0.625rem;
+  display: flex;
 }
 
 .content {
   height: 95%;
   background-color: #151820;
-  margin: 1.5rem;
+  /* margin: 1.5rem; */
   /* border: 1px solid white; */
   display: flex;
-  margin-left: 3.5rem;
+  /* margin-left: 3.5rem; */
   width: 90%;
+  margin: auto;
 }
 
 .content__right-header {

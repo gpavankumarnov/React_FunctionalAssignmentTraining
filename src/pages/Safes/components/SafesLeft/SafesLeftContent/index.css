@@ -1,3 +1,8 @@
+.safes__list {
+  height: calc(100% - 3rem);
+  width: 100%;
+}
+
 p.sectionLeftImageText {
   color: white;
   margin-top: 4rem;

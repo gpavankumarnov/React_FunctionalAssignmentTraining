@@ -9,7 +9,12 @@ import "tippy.js/dist/tippy.css";
 // import "tippy.js/theme/light.css";
 import "tippy.js/themes/light.css";
 
-function SafesLeftContent({ activeSafesData, filteredSafeOnSearch }) {
+function SafesLeftContent({
+  activeSafesData,
+  filteredSafeOnSearch,
+  safesSearchValue,
+  safesDataExport,
+}) {
   const [addShowForm, setAddShowForm] = useState(false);
   const [addSafesList, setAddSafesList] = useState(false);
 
@@ -24,14 +29,18 @@ function SafesLeftContent({ activeSafesData, filteredSafeOnSearch }) {
     setAddShowForm(true);
   };
 
+  console.log("dataExport------------->", safesDataExport);
+
   return (
     <div className="safes__list">
       {safesData.length === 0 ? (
         <div className="content__left-data">
           {addSafesList && (
             <SafesList
+              searchDataExportTrueFalse={safesDataExport}
               SafeFilterOnSearch={filteredSafeOnSearch}
               activeSafeData={activeSafesData}
+              safeSearchData={safesSearchValue}
             />
           )}
 
@@ -55,6 +64,8 @@ function SafesLeftContent({ activeSafesData, filteredSafeOnSearch }) {
         </div>
       ) : (
         <SafesList
+          SafeFilterOnSearch={filteredSafeOnSearch}
+          searchDataExportTrueFalse={safesDataExport}
           activeSafeData={activeSafesData}
           safesListAddBtn={safesListSetAddShowFormFunc}
         />

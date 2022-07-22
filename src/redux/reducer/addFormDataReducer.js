@@ -36,6 +36,7 @@ export const updateAddFormData = (state = initialState, action) => {
       return {
         ...state,
         safeList: [...filteredSafeList],
+
         // activeIndex: state.safeList[0],
       };
     case actions.updatedActiveSafeOnDelete:

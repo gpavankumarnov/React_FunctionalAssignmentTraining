@@ -72,7 +72,12 @@
 .Add-secrets {
   text-align: center;
   padding: 1rem;
-  background-color: #454c5e;
+  background-color: #e20074;
+  color: white;
+}
+
+.Add-secrets:disabled {
+  background-color: #2a2e3e;
   color: white;
 }
 

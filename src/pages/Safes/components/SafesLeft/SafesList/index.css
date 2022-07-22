@@ -9,10 +9,13 @@
 
 .content__left-listData {
   width: 100%;
+  height: 100%;
+  overflow: auto;
 }
 
 .content__left-list {
   width: 100%;
+  height: 100%;
 }
 
 .safeCard {
@@ -21,6 +24,7 @@
   justify-content: space-around;
   height: 5rem;
   width: 100%;
+  overflow: hidden;
   background-image: linear-gradient(to top, #72134b, #1d212c);
 }
 

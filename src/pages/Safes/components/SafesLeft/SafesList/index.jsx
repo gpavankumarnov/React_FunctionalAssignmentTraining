@@ -15,7 +15,13 @@ import "tippy.js/dist/tippy.css";
 import "tippy.js/themes/light.css";
 import EditFormModal from "../EditFormModal";
 
-function SafesList({ safesListAddBtn, activeSafeData, SafeFilterOnSearch }) {
+function SafesList({
+  safesListAddBtn,
+  activeSafeData,
+  SafeFilterOnSearch,
+  safeSearchData,
+  searchDataExportTrueFalse,
+}) {
   // const safesData = useSelector((state) => state.SafeList);
   // console.log("store data ", safesData[0]);
 
@@ -24,6 +30,7 @@ function SafesList({ safesListAddBtn, activeSafeData, SafeFilterOnSearch }) {
   const safesData = useSelector((state) => state.safeList);
   const dispatch = useDispatch();
   const [editForm, setEditForm] = useState(false);
+  // const [searchData, setSearchData] = useState(false);
 
   // const data = {...activeSafeData}
 
@@ -49,8 +56,14 @@ function SafesList({ safesListAddBtn, activeSafeData, SafeFilterOnSearch }) {
     setEditForm(false);
   };
 
+  // const SearchDataStateSet = () => {
+  //   if (safeSearchData !== null) {
+  //     setSearchData(true);
+  //   }
+  // };
+
   const safes = safesData.length;
-  console.log(safes);
+
   //same logic in redux reducer for delete
 
   // const safeListSafeName = safesData.map((name) => <p>{name.SafeName}</p>);
@@ -59,52 +72,87 @@ function SafesList({ safesListAddBtn, activeSafeData, SafeFilterOnSearch }) {
     <>
       <div className="content__left-list">
         <div className="content__left-listData">
-          {/* list and set
-          //useeffect - searchValue, safeData from redux */}
-          {/* {SafeFilterOnSearch != null ? ( */}
-          {/* {SafeFilterOnSearch =0? */}
-          {safesData.map((name, index) => (
-            <div
-              className="safeCard"
-              key={name.id}
-              onClick={() => onClickActiveIndex(name)}
-              style={{
-                background:
-                  name.id === activeSafeData.id
-                    ? "linear-gradient(to right, #72134b, #1d212c)"
-                    : "black",
-              }}
-            >
-              {/* <div className="content__left-list"> */}
-              <img
-                className="safeIcon"
-                src={safeListIcon}
-                alt="safesList-Icon"
-              ></img>
-              {/* </div> */}
-              <div className="safeCard-time">
-                <h3 className="content__left-list">{name.SafeName}</h3>
-                <p>
-                  Last updated: {moment().startOf("hour").fromNow()} • USER SAFE
-                </p>
-              </div>
-              {/* <div className="content__left-list"> */}
-              <img
-                className="icon"
-                src={safeListEdit}
-                onClick={editClick}
-                alt="edit-Button"
-              ></img>
-              <img
-                className="icon"
-                onClick={(e) => deleteSafeCardItem(e, name.id)}
-                src={safeListDelete}
-                alt="delete-Button"
-              ></img>
-              {/* </div> */}
-            </div>
-          ))}
-          {/* : ""} */}
+          {searchDataExportTrueFalse === false
+            ? safesData.map((name, index) => (
+                <div
+                  className="safeCard"
+                  key={name.id}
+                  onClick={() => onClickActiveIndex(name)}
+                  style={{
+                    background:
+                      name.id === activeSafeData.id
+                        ? "linear-gradient(to right, #72134b, #1d212c)"
+                        : "black",
+                  }}
+                >
+                  <img
+                    className="safeIcon"
+                    src={safeListIcon}
+                    alt="safesList-Icon"
+                  ></img>
+
+                  <div className="safeCard-time">
+                    <h3 className="content__left-list">{name.SafeName}</h3>
+                    <p>
+                      Last updated: {moment().startOf("hour").fromNow()} • USER
+                      SAFE
+                    </p>
+                  </div>
+
+                  <img
+                    className="icon"
+                    src={safeListEdit}
+                    onClick={editClick}
+                    alt="edit-Button"
+                  ></img>
+                  <img
+                    className="icon"
+                    onClick={(e) => deleteSafeCardItem(e, name.id)}
+                    src={safeListDelete}
+                    alt="delete-Button"
+                  ></img>
+                </div>
+              ))
+            : SafeFilterOnSearch.map((name, index) => (
+                <div
+                  className="safeCard"
+                  key={name.id}
+                  onClick={() => onClickActiveIndex(name)}
+                  style={{
+                    background:
+                      name.id === activeSafeData.id
+                        ? "linear-gradient(to right, #72134b, #1d212c)"
+                        : "black",
+                  }}
+                >
+                  <img
+                    className="safeIcon"
+                    src={safeListIcon}
+                    alt="safesList-Icon"
+                  ></img>
+
+                  <div className="safeCard-time">
+                    <h3 className="content__left-list">{name.SafeName}</h3>
+                    <p>
+                      Last updated: {moment().startOf("hour").fromNow()} • USER
+                      SAFE
+                    </p>
+                  </div>
+
+                  <img
+                    className="icon"
+                    src={safeListEdit}
+                    onClick={editClick}
+                    alt="edit-Button"
+                  ></img>
+                  <img
+                    className="icon"
+                    onClick={(e) => deleteSafeCardItem(e, name.id)}
+                    src={safeListDelete}
+                    alt="delete-Button"
+                  ></img>
+                </div>
+              ))}
         </div>
       </div>
       {safes >= 1 ? (

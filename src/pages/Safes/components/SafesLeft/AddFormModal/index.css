@@ -89,6 +89,11 @@ p.form_DescriptionText {
   color: white;
 }
 
+.create-btn:disabled {
+  background-color: #2a2e3e;
+  color: white;
+}
+
 select {
   padding: 0.625rem;
   margin: 0.625rem 0;

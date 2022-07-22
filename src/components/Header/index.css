@@ -12,6 +12,7 @@ header {
   width: 100%;
   box-shadow: 0 5px 17px #72134b;
   position: sticky;
+  overflow: hidden;
 }
 
 .header_logo {
@@ -19,8 +20,8 @@ header {
   padding: 1rem;
   display: flex;
   align-items: center;
-  width: 20%;
-  justify-content: space-between;
+  width: 25%;
+  justify-content: center;
 }
 
 h1 {
@@ -30,7 +31,7 @@ h1 {
 }
 
 nav {
-  width: calc(100% - 40%);
+  /* width: calc(100% - 30%); */
   height: 100%;
 }
 

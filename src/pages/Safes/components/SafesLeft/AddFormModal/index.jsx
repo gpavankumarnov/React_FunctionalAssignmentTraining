@@ -19,8 +19,9 @@ function AddFormModal(props) {
   // console.log(props.closeModal());
 
   const [formValues, setFormValues] = useState(initialValues);
-  const [typeDropdownValue, setTypeDropdownValue] = useState("");
-  const [safeNameField, setSafeNameField] = useState(true);
+  // const [typeDropdownValue, setTypeDropdownValue] = useState("");
+  // const [safeNameField, setSafeNameField] = useState(true);
+  const [dropdownType, setDropdownType] = useState("Personal");
 
   const dispatch = useDispatch();
 
@@ -33,36 +34,19 @@ function AddFormModal(props) {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    setFormValues({ ...formValues, [name]: value, Type: typeDropdownValue });
+    setFormValues({ ...formValues, [name]: value, Type: dropdownType });
     console.log(formValues);
   };
 
-  console.log(typeDropdownValue);
-
-  // const createButton = () => {
-  //   if (
-  //     initialValues.SafeName !== "" &&
-  //     initialValues.Owner !== "" &&
-  //     initialValues.Type !== "" &&
-  //     initialValues.Description.length > 10
-  //   ) {
-  //     return setButtonDisabled(false);
-  //   }
-  // };
+  const dropdownValueType = (value) => {
+    formValues.Type = setDropdownType(value);
+  };
 
   const onCreateBtnClick = (e) => {
     e.preventDefault();
-    // if (
-    //   initialValues.SafeName !== "" &&
-    //   initialValues.Owner !== "" &&
-    //   initialValues.Type !== "" &&
-    //   initialValues.Description.length > 10
-    // ) {
-    //   return dispatch(addingForm(formValues));
-    // }
+
     dispatch(addingForm(formValues));
-    console.log("triggering create btn");
-    // setButtonDisabled(false);
+
     props.closeModal();
   };
 
@@ -70,6 +54,9 @@ function AddFormModal(props) {
     e.preventDefault();
     props.closeModal();
   };
+
+  console.log(formValues);
+  console.log(dropdownType);
 
   return (
     <div className="modal__cover">
@@ -95,6 +82,7 @@ function AddFormModal(props) {
                 name="SafeName"
                 value={formValues.SafeName}
                 onChange={handleChange}
+                maxLength={25}
               ></input>
               <label htmlFor="owner">Owner</label>
               <input
@@ -104,14 +92,15 @@ function AddFormModal(props) {
                 name="Owner"
                 value={formValues.Owner}
                 onChange={handleChange}
+                maxLength={25}
               ></input>
               <label htmlFor="type">Type</label>
 
               <select
                 id="dropdown"
                 name="Type"
-                value={typeDropdownValue}
-                onChange={(e) => setTypeDropdownValue(e.target.value)}
+                onChange={(e) => dropdownValueType(e.target.value)}
+                value={dropdownType}
               >
                 <option value="Personal">Personal</option>
                 <option value="Other">Other</option>
@@ -126,7 +115,8 @@ function AddFormModal(props) {
                 value={formValues.Description}
                 onChange={handleChange}
                 name="Description"
-                maxlength={10}
+                maxLength={50}
+                minLength={10}
               ></textarea>
 
               <p className="form_DescriptionText">
@@ -134,7 +124,20 @@ function AddFormModal(props) {
               </p>
               <div className="create__cancelBtn">
                 <button onClick={onCancelBtnClick}>Cancel</button>
-                <button onClick={onCreateBtnClick}>+Create</button>
+                <button
+                  disabled={
+                    formValues.SafeName !== "" &&
+                    formValues.Owner !== "" &&
+                    formValues.Type !== "" &&
+                    formValues.Description.length > 10
+                      ? false
+                      : true
+                  }
+                  className="create-btn"
+                  onClick={onCreateBtnClick}
+                >
+                  +Create
+                </button>
               </div>
             </form>
           </div>
